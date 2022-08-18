@@ -1,6 +1,38 @@
 {% extends 'base/base.html' %}
 
 {% block contenido %}
-<h1>listado productos</h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Codigo</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Marca</th>
+      <th scope="col">Precio</th>
+      <th scope="col">Stock</th>
+      <th scope="col" class="text-center">Acciones</th>
+    </tr>
+  </thead>
+  <tbody class="table-striped">
+    {% for data in obj %}
+    <tr>
+      <th scope="row">{{data.codigo}}</th>
+      <td>{{data.nombre}}</td>
+      <td>{{data.marca}}</td>
+      <td>$ {{data.precio}}</td>
+      <td>{{data.stock}}</td>
+      <td class="text-center">
+        <a href="{% url 'producto:editarproducto' data.id %}" class="btn btn-outline-primary">Editar</a>
+        <a href="#" class="btn btn-outline-danger">Eliminar</a>
+      </td>
+    </tr>
+
+    {% endfor %}
+    
+  </tbody>
+</table>
+
+{% endblock %}
+
+{% block javascript %}
 
 {% endblock %}
